@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Calculator, Menu, X, ChevronDown } from "lucide-react";
+import { 
+  Menu, X, ChevronDown, 
+  DollarSign, Percent, Heart, Calendar, ArrowLeftRight, Home 
+} from "lucide-react";
 import { useState } from "react";
 
 const categories = [
-  { name: "Financial", href: "/financial", emoji: "💰" },
-  { name: "Math", href: "/math", emoji: "📊" },
-  { name: "Health", href: "/health", emoji: "🏋️" },
-  { name: "Date & Time", href: "/date-time", emoji: "📅" },
-  { name: "Converters", href: "/converters", emoji: "📐" },
-  { name: "Home & DIY", href: "/home", emoji: "🏠" },
+  { name: "Financial", href: "/financial", icon: DollarSign },
+  { name: "Math", href: "/math", icon: Percent },
+  { name: "Health", href: "/health", icon: Heart },
+  { name: "Date & Time", href: "/date-time", icon: Calendar },
+  { name: "Converters", href: "/converters", icon: ArrowLeftRight },
+  { name: "Home & DIY", href: "/home", icon: Home },
 ];
 
 export function Header() {
@@ -22,12 +26,16 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg brand-gradient flex items-center justify-center">
-              <Calculator className="h-5 w-5 text-white" />
-            </div>
-            <span className="font-bold text-xl">
-              Calc<span className="brand-gradient-text">Zipp</span>
+          <Link href="/" className="flex items-center gap-1">
+            <Image 
+              src="/logo.svg" 
+              alt="CalcZipp" 
+              width={28} 
+              height={36}
+              className="w-7 h-9"
+            />
+            <span className="text-2xl font-bold">
+              Calc<span className="brand-gradient-text font-extrabold">Zipp</span>
             </span>
           </Link>
 
@@ -45,7 +53,9 @@ export function Header() {
                     href={cat.href}
                     className="flex items-center gap-3 px-4 py-2.5 hover:bg-muted transition-colors"
                   >
-                    <span>{cat.emoji}</span>
+                    <div className="w-6 h-6 rounded-md brand-gradient flex items-center justify-center">
+                      <cat.icon className="h-3.5 w-3.5 text-white" />
+                    </div>
                     <span className="text-sm font-medium">{cat.name}</span>
                   </Link>
                 ))}
@@ -96,7 +106,9 @@ export function Header() {
                   className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg hover:bg-muted transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span>{cat.emoji}</span>
+                  <div className="w-7 h-7 rounded-md brand-gradient flex items-center justify-center">
+                    <cat.icon className="h-4 w-4 text-white" />
+                  </div>
                   {cat.name}
                 </Link>
               ))}

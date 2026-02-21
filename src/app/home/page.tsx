@@ -29,7 +29,7 @@ export default function HomePage() {
               <Home className="h-3 w-3 mr-1" />
               Home & DIY
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">🏠 Home & DIY Calculators</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Home & DIY Calculators</h1>
             <p className="text-xl text-muted-foreground">
               Free calculators for home improvement and DIY projects.
             </p>

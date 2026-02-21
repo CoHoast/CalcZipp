@@ -38,7 +38,7 @@ export default function FinancialPage() {
               Financial Calculators
             </Badge>
             <h1 className="text-3xl md:text-5xl font-bold mb-4">
-              💰 Financial Calculators
+              Financial Calculators
             </h1>
             <p className="text-xl text-muted-foreground">
               Free calculators for mortgages, loans, savings, tips, and all your financial needs.

@@ -31,7 +31,7 @@ export default function DateTimePage() {
               <Calendar className="h-3 w-3 mr-1" />
               Date & Time
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">📅 Date & Time Calculators</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Date & Time Calculators</h1>
             <p className="text-xl text-muted-foreground">
               Free calculators for age, dates, countdowns, and time zones.
             </p>

@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Calculator,
   DollarSign,
   Percent,
   Heart,
@@ -13,75 +12,150 @@ import {
   ArrowRight,
   Sparkles,
   Zap,
+  Building,
+  Scale,
+  Clock,
+  Flame,
+  Ruler,
+  CreditCard,
+  Gift,
+  UserCheck,
+  ShieldCheck,
+  CheckCircle,
+  Smartphone,
+  Ban,
+  QrCode,
+  FileText,
+  Image,
   Search,
+  Video,
+  FileSpreadsheet,
+  type LucideIcon,
 } from "lucide-react";
 
-const categories = [
+interface Category {
+  name: string;
+  href: string;
+  icon: LucideIcon;
+  description: string;
+  calculators: string[];
+}
+
+const categories: Category[] = [
   {
     name: "Financial",
-    emoji: "💰",
     href: "/financial",
     icon: DollarSign,
     description: "Mortgage, loans, savings, tips & more",
-    color: "from-green-500 to-emerald-500",
     calculators: ["Mortgage", "Loan", "Savings", "Tip", "Compound Interest"],
   },
   {
     name: "Math & Percentage",
-    emoji: "📊",
     href: "/math",
     icon: Percent,
     description: "Percentages, fractions, GPA & more",
-    color: "from-blue-500 to-indigo-500",
     calculators: ["Percentage", "Fraction", "GPA", "Average", "Scientific"],
   },
   {
     name: "Health & Fitness",
-    emoji: "🏋️",
     href: "/health",
     icon: Heart,
     description: "BMI, calories, macros & more",
-    color: "from-red-500 to-pink-500",
     calculators: ["BMI", "Calorie", "Macro", "Ideal Weight", "Body Fat"],
   },
   {
     name: "Date & Time",
-    emoji: "📅",
     href: "/date-time",
     icon: Calendar,
     description: "Age, date difference, countdown & more",
-    color: "from-purple-500 to-violet-500",
     calculators: ["Age", "Date Difference", "Countdown", "Time Zone"],
   },
   {
     name: "Converters",
-    emoji: "📐",
     href: "/converters",
     icon: ArrowLeftRight,
     description: "Length, weight, temperature & more",
-    color: "from-amber-500 to-orange-500",
     calculators: ["Length", "Weight", "Temperature", "Volume", "Data"],
   },
   {
     name: "Home & DIY",
-    emoji: "🏠",
     href: "/home",
     icon: Home,
     description: "Square footage, paint, flooring & more",
-    color: "from-teal-500 to-cyan-500",
     calculators: ["Square Footage", "Paint", "Flooring", "Concrete"],
   },
 ];
 
-const popularCalculators = [
-  { name: "Mortgage Calculator", href: "/financial/mortgage", emoji: "🏠" },
-  { name: "BMI Calculator", href: "/health/bmi", emoji: "⚖️" },
-  { name: "Percentage Calculator", href: "/math/percentage", emoji: "%" },
-  { name: "Age Calculator", href: "/date-time/age", emoji: "🎂" },
-  { name: "Tip Calculator", href: "/financial/tip", emoji: "💵" },
-  { name: "Loan Calculator", href: "/financial/loan", emoji: "💳" },
-  { name: "Calorie Calculator", href: "/health/calorie", emoji: "🔥" },
-  { name: "Length Converter", href: "/converters/length", emoji: "📏" },
+interface PopularCalculator {
+  name: string;
+  href: string;
+  icon: LucideIcon;
+}
+
+const popularCalculators: PopularCalculator[] = [
+  { name: "Mortgage Calculator", href: "/financial/mortgage", icon: Building },
+  { name: "BMI Calculator", href: "/health/bmi", icon: Scale },
+  { name: "Percentage Calculator", href: "/math/percentage", icon: Percent },
+  { name: "Age Calculator", href: "/date-time/age", icon: Calendar },
+  { name: "Tip Calculator", href: "/financial/tip", icon: DollarSign },
+  { name: "Loan Calculator", href: "/financial/loan", icon: CreditCard },
+  { name: "Calorie Calculator", href: "/health/calorie", icon: Flame },
+  { name: "Length Converter", href: "/converters/length", icon: Ruler },
+];
+
+interface ZippProduct {
+  name: string;
+  url: string;
+  icon: LucideIcon;
+  desc: string;
+}
+
+const zippProducts: ZippProduct[] = [
+  { name: "QRZipp", url: "https://qrzipp.com", icon: QrCode, desc: "QR Codes" },
+  { name: "PDFZipp", url: "https://pdfzipp.com", icon: FileText, desc: "PDF Tools" },
+  { name: "PIXZipp", url: "https://pixzipp.com", icon: Image, desc: "Image Tools" },
+  { name: "SEOZipp", url: "https://seozipp.surge.sh", icon: Search, desc: "SEO Analysis" },
+  { name: "VidZipp", url: "https://vidzipp.com", icon: Video, desc: "Video Tools" },
+  { name: "DOCZipp", url: "https://doczipp.com", icon: FileSpreadsheet, desc: "Documents" },
+];
+
+interface Feature {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+const features: Feature[] = [
+  {
+    title: "100% Free",
+    description: "All calculators are completely free. No hidden fees, no premium tier, no catch.",
+    icon: Gift,
+  },
+  {
+    title: "No Signup",
+    description: "Just use the calculators. No account required, no email needed.",
+    icon: Zap,
+  },
+  {
+    title: "Privacy First",
+    description: "We don't track you. Your calculations stay in your browser.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Accurate Results",
+    description: "Built by developers who care about getting the math right.",
+    icon: CheckCircle,
+  },
+  {
+    title: "Mobile Friendly",
+    description: "Works perfectly on any device. Calculate on the go.",
+    icon: Smartphone,
+  },
+  {
+    title: "No Ads",
+    description: "Clean, distraction-free interface. Just calculators.",
+    icon: Ban,
+  },
 ];
 
 export default function HomePage() {
@@ -108,12 +182,12 @@ export default function HomePage() {
               Fast, accurate, and no signup required.
             </p>
 
-            {/* Search / Quick Access */}
+            {/* Quick Access */}
             <div className="flex flex-wrap gap-3 justify-center mb-8">
               {popularCalculators.slice(0, 4).map((calc) => (
                 <Link key={calc.href} href={calc.href}>
                   <Button variant="outline" size="lg" className="gap-2">
-                    <span>{calc.emoji}</span>
+                    <calc.icon className="h-4 w-4" />
                     {calc.name.replace(" Calculator", "")}
                   </Button>
                 </Link>
@@ -142,13 +216,12 @@ export default function HomePage() {
             <Link key={category.href} href={category.href}>
               <Card className="category-card h-full">
                 <div className="flex items-start gap-4">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center flex-shrink-0`}>
+                  <div className="w-12 h-12 rounded-xl brand-gradient flex items-center justify-center flex-shrink-0">
                     <category.icon className="h-6 w-6 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg mb-1 flex items-center gap-2">
+                    <h3 className="font-semibold text-lg mb-1">
                       {category.name}
-                      <span>{category.emoji}</span>
                     </h3>
                     <p className="text-sm text-muted-foreground mb-3">
                       {category.description}
@@ -187,7 +260,9 @@ export default function HomePage() {
           {popularCalculators.map((calc) => (
             <Link key={calc.href} href={calc.href}>
               <Card className="calculator-card text-center p-6 h-full">
-                <div className="text-3xl mb-2">{calc.emoji}</div>
+                <div className="w-12 h-12 rounded-xl brand-gradient flex items-center justify-center mx-auto mb-3">
+                  <calc.icon className="h-6 w-6 text-white" />
+                </div>
                 <div className="font-medium text-sm">{calc.name}</div>
               </Card>
             </Link>
@@ -205,14 +280,7 @@ export default function HomePage() {
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
-          {[
-            { name: "QRZipp", url: "https://qrzipp.com", emoji: "📱", desc: "QR Codes" },
-            { name: "PDFZipp", url: "https://pdfzipp.com", emoji: "📄", desc: "PDF Tools" },
-            { name: "PIXZipp", url: "https://pixzipp.com", emoji: "🖼️", desc: "Image Tools" },
-            { name: "SEOZipp", url: "https://seozipp.surge.sh", emoji: "🔍", desc: "SEO Analysis" },
-            { name: "VidZipp", url: "https://vidzipp.com", emoji: "🎬", desc: "Video Tools" },
-            { name: "DOCZipp", url: "https://doczipp.com", emoji: "📋", desc: "Documents" },
-          ].map((product) => (
+          {zippProducts.map((product) => (
             <Link
               key={product.name}
               href={product.url}
@@ -220,7 +288,9 @@ export default function HomePage() {
               rel="noopener noreferrer"
             >
               <Card className="calculator-card text-center p-4 h-full">
-                <div className="text-2xl mb-1">{product.emoji}</div>
+                <div className="w-10 h-10 rounded-lg brand-gradient flex items-center justify-center mx-auto mb-2">
+                  <product.icon className="h-5 w-5 text-white" />
+                </div>
                 <div className="font-medium text-sm">{product.name}</div>
                 <div className="text-xs text-muted-foreground">{product.desc}</div>
               </Card>
@@ -236,40 +306,11 @@ export default function HomePage() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {[
-            {
-              title: "100% Free",
-              description: "All calculators are completely free. No hidden fees, no premium tier, no catch.",
-              emoji: "🎁",
-            },
-            {
-              title: "No Signup",
-              description: "Just use the calculators. No account required, no email needed.",
-              emoji: "⚡",
-            },
-            {
-              title: "Privacy First",
-              description: "We don't track you. Your calculations stay in your browser.",
-              emoji: "🔒",
-            },
-            {
-              title: "Accurate Results",
-              description: "Built by developers who care about getting the math right.",
-              emoji: "✅",
-            },
-            {
-              title: "Mobile Friendly",
-              description: "Works perfectly on any device. Calculate on the go.",
-              emoji: "📱",
-            },
-            {
-              title: "No Ads",
-              description: "Clean, distraction-free interface. Just calculators.",
-              emoji: "🚫",
-            },
-          ].map((feature) => (
+          {features.map((feature) => (
             <div key={feature.title} className="text-center">
-              <div className="text-4xl mb-3">{feature.emoji}</div>
+              <div className="w-14 h-14 rounded-xl brand-gradient flex items-center justify-center mx-auto mb-3">
+                <feature.icon className="h-7 w-7 text-white" />
+              </div>
               <h3 className="font-semibold mb-2">{feature.title}</h3>
               <p className="text-sm text-muted-foreground">{feature.description}</p>
             </div>

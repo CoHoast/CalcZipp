@@ -13,16 +13,41 @@ export default function DateDifferenceCalculator() {
 
   const calculate = () => {
     if (!startDate || !endDate) return;
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const diffTime = Math.abs(end.getTime() - start.getTime());
+    
+    // Parse dates - add time to avoid timezone issues
+    const start = new Date(startDate + 'T00:00:00');
+    const end = new Date(endDate + 'T00:00:00');
+    
+    // Ensure start is before end for consistent calculation
+    const earlier = start <= end ? start : end;
+    const later = start <= end ? end : start;
+    
+    // Calculate years, months, days properly using calendar logic
+    let years = later.getFullYear() - earlier.getFullYear();
+    let months = later.getMonth() - earlier.getMonth();
+    let days = later.getDate() - earlier.getDate();
+    
+    // Adjust for negative days
+    if (days < 0) {
+      months--;
+      // Get days in the previous month of the later date
+      const lastMonth = new Date(later.getFullYear(), later.getMonth(), 0);
+      days += lastMonth.getDate();
+    }
+    
+    // Adjust for negative months
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    
+    // Calculate total days for other metrics
+    const diffTime = Math.abs(later.getTime() - earlier.getTime());
     const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const years = Math.floor(totalDays / 365);
-    const months = Math.floor((totalDays % 365) / 30);
-    const days = totalDays % 30;
     const weeks = Math.floor(totalDays / 7);
     const hours = totalDays * 24;
     const minutes = hours * 60;
+    
     setResult({ totalDays, years, months, days, weeks, hours, minutes });
   };
 

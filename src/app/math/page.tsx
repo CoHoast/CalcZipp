@@ -31,7 +31,7 @@ export default function MathPage() {
               <Percent className="h-3 w-3 mr-1" />
               Math Calculators
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">📊 Math Calculators</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Math & Percentage Calculators</h1>
             <p className="text-xl text-muted-foreground">
               Free calculators for percentages, fractions, GPA, and all your math needs.
             </p>

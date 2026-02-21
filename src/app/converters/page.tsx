@@ -31,7 +31,7 @@ export default function ConvertersPage() {
               <ArrowLeftRight className="h-3 w-3 mr-1" />
               Unit Converters
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">📐 Unit Converters</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Unit Converters</h1>
             <p className="text-xl text-muted-foreground">
               Free converters for length, weight, temperature, and all units.
             </p>

@@ -31,7 +31,7 @@ export default function HealthPage() {
               <Heart className="h-3 w-3 mr-1" />
               Health & Fitness
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">🏋️ Health Calculators</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">Health & Fitness Calculators</h1>
             <p className="text-xl text-muted-foreground">
               Free calculators for BMI, calories, macros, and all your fitness needs.
             </p>
