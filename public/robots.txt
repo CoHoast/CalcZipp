@@ -1,0 +1,6 @@
+# CalcZipp Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.calczipp.com/sitemap.xml
