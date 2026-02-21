@@ -6,6 +6,7 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 
 const GA_MEASUREMENT_ID = "G-GCLHM7N4W6";
+const GOOGLE_ADS_ID = "AW-17968525483";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -136,6 +137,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}');
+            gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
         
