@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+
+const GA_MEASUREMENT_ID = "G-GCLHM7N4W6";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -122,6 +125,20 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+        
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">{children}</main>
